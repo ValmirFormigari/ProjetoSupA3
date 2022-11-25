@@ -1,13 +1,11 @@
 package br.com.Usuario.model;
 
-import java.util.Date;
 
 public class Usuario {
 
 	private int u01_id;
-	private int u01_cpf;
+	private String u01_cpf;
 	private String u01_nome;
-	private Date u01_data_nasc;
 	private String u01_funcao;
 	private String u01_senha;
 	
@@ -17,10 +15,10 @@ public class Usuario {
 	public void setU01_id(int u01_id) {
 		this.u01_id = u01_id;
 	}
-	public int getU01_cpf() {
+	public String getU01_cpf() {
 		return u01_cpf;
 	}
-	public void setU01_cpf(int u01_cpf) {
+	public void setU01_cpf(String u01_cpf) {
 		this.u01_cpf = u01_cpf;
 	}
 	public String getU01_nome() {
@@ -28,12 +26,6 @@ public class Usuario {
 	}
 	public void setU01_nome(String u01_nome) {
 		this.u01_nome = u01_nome;
-	}
-	public Date getU01_data_nasc() {
-		return u01_data_nasc;
-	}
-	public void setU01_data_nasc(Date u01_data_nasc) {
-		this.u01_data_nasc = u01_data_nasc;
 	}
 	public String getU01_funcao() {
 		return u01_funcao;

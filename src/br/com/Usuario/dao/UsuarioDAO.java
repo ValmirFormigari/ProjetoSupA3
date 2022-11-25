@@ -1,19 +1,17 @@
 package br.com.Usuario.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 
 import br.com.Usuario.factory.ConnectionFactory;
-import br.com.Usuario.model.Usuario;
 
 
 public class UsuarioDAO {
 	
-	public void save(Usuario usuario) {
+	public void save(String getU01_cpf, String U01_nome, String U01_funcao, String getU01_senha) {
 		
-		String sql = "INSERT INTO u01(u01_cpf,u01_nome,u01_nasc,u01_funcao,u01_senha) VALUES(?,?,?,?,?)";
-		
+		String sql = "INSERT INTO u01(u01_cpf,u01_nome,u01_funcao,u01_senha) VALUES(?,?,?,?)";
+
 		Connection conn = null;
 		PreparedStatement pstm = null;
 		
@@ -22,11 +20,10 @@ public class UsuarioDAO {
 			
 			pstm = (PreparedStatement) conn.prepareStatement(sql);
 			
-			pstm.setInt(1, usuario.getU01_cpf());
-			pstm.setString(2, usuario.getU01_nome());
-			pstm.setDate(3, new Date(usuario.getU01_data_nasc().getTime()));
-			pstm.setString(4, usuario.getU01_funcao());
-			pstm.setString(5, usuario.getU01_senha());
+			pstm.setString(1, getU01_cpf);
+			pstm.setString(2,U01_nome);
+			pstm.setString(3,U01_funcao);
+			pstm.setString(4,getU01_senha);
 			
 			pstm.execute();
 			
@@ -49,4 +46,5 @@ public class UsuarioDAO {
 			}
 		
 	}
+	
 }
