@@ -7,6 +7,9 @@ import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import br.com.Usuario.Aplicacao.JanelaUsuario;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -16,7 +19,7 @@ import java.awt.event.ActionEvent;
 
 public class JanelaChamadosDeUsuarios {
 
-	private JFrame frame;
+	public JFrame frame;
 	private JTable table;
 
 	/**
@@ -49,7 +52,7 @@ public class JanelaChamadosDeUsuarios {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setBounds(100, 100, 641, 493);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
@@ -81,9 +84,11 @@ public class JanelaChamadosDeUsuarios {
 		JButton btnNewButton_1 = new JButton("Novo chamado");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				AbrirNovoChamado cad_cham = new AbrirNovoChamado();
+	               cad_cham.frame.setVisible(true);
 			}
 		});
-		btnNewButton_1.setBounds(513, 425, 103, 23);
+		btnNewButton_1.setBounds(496, 425, 120, 23);
 		frame.getContentPane().add(btnNewButton_1);
 	}
 

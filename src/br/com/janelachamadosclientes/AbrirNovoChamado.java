@@ -12,7 +12,7 @@ import javax.swing.JButton;
 
 public class AbrirNovoChamado {
 
-	private JFrame frame;
+	 JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -48,7 +48,7 @@ public class AbrirNovoChamado {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 748, 625);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JTextPane txtpnNhubhuubbububbubbbbbbbubbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb = new JTextPane();

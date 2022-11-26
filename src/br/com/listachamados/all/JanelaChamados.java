@@ -18,7 +18,7 @@ import java.awt.event.ActionEvent;
 
 public class JanelaChamados {
 
-	private JFrame frmChamados;
+	public JFrame frmChamados;
 	private JTable table;
 	private JTable table_1;
 	private JTable table_2;
@@ -124,6 +124,10 @@ public class JanelaChamados {
 		scrollPane_2.setViewportView(table_2);
 		
 		JButton btnNewButton = new JButton("Lista de usuarios");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton.setBounds(1597, 549, 135, 23);
 		frmChamados.getContentPane().add(btnNewButton);
 		
