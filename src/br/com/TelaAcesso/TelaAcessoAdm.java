@@ -58,6 +58,7 @@ public class TelaAcessoAdm {
 	 */
 	private void initialize() {
 		frmLogin = new JFrame();
+		frmLogin.getContentPane().setBackground(Color.WHITE);
 		frmLogin.setBackground(Color.WHITE);
 		frmLogin.setTitle("LOGIN");
 		frmLogin.setBounds(100, 100, 681, 438);
