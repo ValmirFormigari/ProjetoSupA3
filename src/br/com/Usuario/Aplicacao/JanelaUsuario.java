@@ -18,7 +18,7 @@ import java.awt.Color;
 //https://www.youtube.com/watch?v=XeBJGEZrbJw
 public class JanelaUsuario {
 
-	JFrame frmCriarUsuario;
+	public JFrame frmCriarUsuario;
 	private JTextField I_CPF;
 	private JTextField I_Nome;
 	private JTextField I_Funcao;

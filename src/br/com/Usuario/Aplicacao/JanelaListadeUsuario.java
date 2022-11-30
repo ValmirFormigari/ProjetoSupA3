@@ -28,7 +28,7 @@ import java.awt.Color;
 
 public class JanelaListadeUsuario {
 
-	private JFrame frame;
+	public JFrame frameListaUsu;
 	private JTable tbUS;
 	private JTextField delete;
 
@@ -40,7 +40,7 @@ public class JanelaListadeUsuario {
 			public void run() {
 				try {
 					JanelaListadeUsuario window = new JanelaListadeUsuario();
-					window.frame.setVisible(true);
+					window.frameListaUsu.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -59,15 +59,15 @@ public class JanelaListadeUsuario {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setBackground(Color.WHITE);
-		frame.setBounds(100, 100, 732, 470);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frameListaUsu = new JFrame();
+		frameListaUsu.getContentPane().setBackground(Color.WHITE);
+		frameListaUsu.setBounds(100, 100, 732, 470);
+		frameListaUsu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frameListaUsu.getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 11, 542, 382);
-		frame.getContentPane().add(scrollPane);
+		frameListaUsu.getContentPane().add(scrollPane);
 		
 		tbUS = new JTable();
 		tbUS.setModel(new DefaultTableModel(
@@ -121,7 +121,7 @@ public class JanelaListadeUsuario {
 					}
 			}
 		});
-		frame.getContentPane().add(btnNewButton);
+		frameListaUsu.getContentPane().add(btnNewButton);
 		
 		JButton bt_us = new JButton("Criar Usuario");
 		bt_us.setBounds(591, 11, 122, 23);
@@ -129,12 +129,12 @@ public class JanelaListadeUsuario {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		frame.getContentPane().add(bt_us);
+		frameListaUsu.getContentPane().add(bt_us);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.RED);
 		panel.setBounds(562, 342, 151, 85);
-		frame.getContentPane().add(panel);
+		frameListaUsu.getContentPane().add(panel);
 		
 		JLabel lblNewLabel = new JLabel("Insira o Id ");
 		panel.add(lblNewLabel);

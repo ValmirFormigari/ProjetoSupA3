@@ -13,15 +13,25 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import br.com.JanelaIMAGE.JanelaIMAGE;
+import br.com.Usuario.Aplicacao.JanelaListadeUsuario;
+import br.com.Usuario.Aplicacao.JanelaUsuario;
+import br.com.Usuario.factory.ConnectionFactory;
+import br.com.janelachamadosclientes.AbrirNovoChamado;
+
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 
 public class JanelaChamados {
 
 	public JFrame frmChamados;
-	private JTable table;
-	private JTable table_1;
-	private JTable table_2;
+	private JTable table_Cha_Abrt;
+	private JTable table_Cha_Exec;
+	private JTable table_Cha_Fin;
 
 	/**
 	 * Launch the application.
@@ -69,15 +79,22 @@ public class JanelaChamados {
 		scrollPane.setBounds(10, 21, 483, 529);
 		panel.add(scrollPane);
 		
-		table = new JTable();
-		table.setModel(new DefaultTableModel(
+		table_Cha_Abrt = new JTable();
+		table_Cha_Abrt.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
-				"New column", "New column", "New column"
+				"Id", "Assunto", "Prioridade", "Data de Abertura", "Status"
 			}
-		));
-		scrollPane.setViewportView(table);
+		) {
+			boolean[] columnEditables = new boolean[] {
+				true, true, true, true, false
+			};
+			public boolean isCellEditable(int row, int column) {
+				return columnEditables[column];
+			}
+		});
+		scrollPane.setViewportView(table_Cha_Abrt);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
@@ -91,15 +108,15 @@ public class JanelaChamados {
 		scrollPane_1.setBounds(10, 21, 483, 529);
 		panel_1.add(scrollPane_1);
 		
-		table_1 = new JTable();
-		table_1.setModel(new DefaultTableModel(
+		table_Cha_Exec = new JTable();
+		table_Cha_Exec.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
-				"New column", "New column"
+				"Id", "Assunto", "Prioridade ", "Data de Abertura", "Status"
 			}
 		));
-		scrollPane_1.setViewportView(table_1);
+		scrollPane_1.setViewportView(table_Cha_Exec);
 		
 		JPanel panel_1_1 = new JPanel();
 		panel_1_1.setLayout(null);
@@ -113,19 +130,22 @@ public class JanelaChamados {
 		scrollPane_2.setBounds(10, 21, 483, 529);
 		panel_1_1.add(scrollPane_2);
 		
-		table_2 = new JTable();
-		table_2.setModel(new DefaultTableModel(
+		table_Cha_Fin = new JTable();
+		table_Cha_Fin.setModel(new DefaultTableModel(
 			new Object[][] {
 			},
 			new String[] {
-				"New column", "New column"
+				"Id", "Assunto", "Prioridade", "Data de Abertura", "Status"
 			}
 		));
-		scrollPane_2.setViewportView(table_2);
+		scrollPane_2.setViewportView(table_Cha_Fin);
 		
 		JButton btnNewButton = new JButton("Lista de usuarios");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				JanelaListadeUsuario Chama_Lista_Usu= new JanelaListadeUsuario();
+				Chama_Lista_Usu.frameListaUsu.setVisible(true);
+				
 			}
 		});
 		btnNewButton.setBounds(1597, 549, 135, 23);
@@ -135,24 +155,132 @@ public class JanelaChamados {
 		btnNewButton_1.setBounds(1597, 521, 135, 23);
 		frmChamados.getContentPane().add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("Mapa sala");
-		btnNewButton_2.setBounds(1610, 22, 111, 40);
-		frmChamados.getContentPane().add(btnNewButton_2);
+		JButton bntmapa = new JButton("Mapa sala");
+		bntmapa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JanelaIMAGE MAPA = new JanelaIMAGE();
+	               MAPA.frmMapa.setVisible(true); 
+			}
+		});
+		bntmapa.setBounds(1610, 22, 111, 40);
+		frmChamados.getContentPane().add(bntmapa);
 		
-		JButton btnNewButton_3 = new JButton("att1");
+		JButton btnNewButton_3 = new JButton("Atualizar");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String sql1 = "SELECT c01_id , c01_assunto, c01_prioridade, c01_data_abertura ,(CASE WHEN c01_status = 1 THEN 'ABERTO' END) AS STATUS FROM c01 where c01_status = 1;";
+
+				Connection conn5 = null;
+				PreparedStatement pstm5 = null;
+				
+				try {
+					conn5 = ConnectionFactory.createConnectionToMySQL();
+					
+					pstm5 = (PreparedStatement) conn5.prepareStatement(sql1);
+					
+					ResultSet rs = pstm5.executeQuery();
+					 
+					//pstm1.execute();
+					 
+					DefaultTableModel modelo = (DefaultTableModel) table_Cha_Abrt.getModel();
+					 
+					 modelo.setNumRows(0);
+					 while(rs.next()) {
+						
+						 modelo.addRow(new Object[] {rs.getString("c01_id"),rs.getString("c01_assunto"),rs.getString("c01_prioridade"),rs.getString("c01_data_abertura"),rs.getString("STATUS")});
+						 
+					 }
+					 rs.close();
+					 conn5.close();
+					} catch (Exception e2) { 
+						e2.printStackTrace();
+					}
+				
 			}
 		});
 		btnNewButton_3.setBounds(10, 583, 135, 23);
 		frmChamados.getContentPane().add(btnNewButton_3);
 		
-		JButton btnNewButton_4 = new JButton("att2");
+		JButton btnNewButton_4 = new JButton("Atualizar");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e1) {
+				String sql1 = "SELECT c01_id , c01_assunto, c01_prioridade, c01_data_abertura ,(CASE WHEN c01_status = 2 THEN 'EXECUTANDO' END) AS STATUS FROM c01 where c01_status = 2;";
+
+				Connection conn5 = null;
+				PreparedStatement pstm5 = null;
+				
+				try {
+					conn5 = ConnectionFactory.createConnectionToMySQL();
+					
+					pstm5 = (PreparedStatement) conn5.prepareStatement(sql1);
+					
+					ResultSet rs = pstm5.executeQuery();
+					 
+					//pstm1.execute();
+					 
+					DefaultTableModel modelo = (DefaultTableModel) table_Cha_Exec.getModel();
+					 
+					 modelo.setNumRows(0);
+					 while(rs.next()) {
+						
+						 modelo.addRow(new Object[] {rs.getString("c01_id"),rs.getString("c01_assunto"),rs.getString("c01_prioridade"),rs.getString("c01_data_abertura"),rs.getString("STATUS")});
+						 
+					 }
+					 rs.close();
+					 conn5.close();
+					} catch (Exception e2) { 
+						e2.printStackTrace();
+					}
+				
+			}
+		});
 		btnNewButton_4.setBounds(523, 583, 89, 23);
 		frmChamados.getContentPane().add(btnNewButton_4);
 		
-		JButton btnNewButton_5 = new JButton("att3");
-		btnNewButton_5.setBounds(1036, 583, 89, 23);
+		JButton btnNewButton_5 = new JButton("Atualizar");
+		btnNewButton_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e1) {
+				String sql1 = "SELECT c01_id , c01_assunto, c01_prioridade, c01_data_abertura ,(CASE WHEN c01_status = 3 THEN 'FINALIZADO' END) AS STATUS FROM c01 where c01_status = 3;";
+
+				Connection conn5 = null;
+				PreparedStatement pstm5 = null;
+				
+				try {
+					conn5 = ConnectionFactory.createConnectionToMySQL();
+					
+					pstm5 = (PreparedStatement) conn5.prepareStatement(sql1);
+					
+					ResultSet rs = pstm5.executeQuery();
+					 
+					//pstm1.execute();
+					 
+					DefaultTableModel modelo = (DefaultTableModel) table_Cha_Fin.getModel();
+					 
+					 modelo.setNumRows(0);
+					 while(rs.next()) {
+						
+						 modelo.addRow(new Object[] {rs.getString("c01_id"),rs.getString("c01_assunto"),rs.getString("c01_prioridade"),rs.getString("c01_data_abertura"),rs.getString("STATUS")});
+						 
+					 }
+					 rs.close();
+					 conn5.close();
+					} catch (Exception e2) { 
+						e2.printStackTrace();
+					}
+				
+			}
+		});
+		btnNewButton_5.setBounds(1036, 583, 111, 23);
 		frmChamados.getContentPane().add(btnNewButton_5);
+		
+		JButton btnNewButton_6 = new JButton("Buscar chamado");
+		btnNewButton_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AbrirNovoChamado cad_cham = new AbrirNovoChamado();
+	               cad_cham.frmChamado.setVisible(true); 
+			}
+		});
+		btnNewButton_6.setBounds(1597, 494, 135, 23);
+		frmChamados.getContentPane().add(btnNewButton_6);
 	}
 }
