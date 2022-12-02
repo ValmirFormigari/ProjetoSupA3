@@ -33,6 +33,7 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Toolkit;
 
 public class AbrirNovoChamado {
 
@@ -79,6 +80,7 @@ public class AbrirNovoChamado {
 	 */
 	private void initialize() {
 		frmChamado = new JFrame();
+		frmChamado.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\valmi\\Downloads\\download.png"));
 		frmChamado.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 14));
 		frmChamado.getContentPane().setBackground(Color.WHITE);
 		frmChamado.setTitle("Chamado");
@@ -204,10 +206,16 @@ public class AbrirNovoChamado {
 					pstm.setString(7,txtAvaliar.getText());
 					pstm.setString(8,textField_status.getText());
 					pstm.setString(9,textFieldadm.getText());
+					
+
+					
 					//c01_adm01_id
 					
 					pstm.execute();
-						
+					
+					
+					JOptionPane.showMessageDialog(null," Chamado incluido com sucesso");
+					
 				} catch (Exception ee) { 
 					ee.printStackTrace();
 				}finally {
@@ -226,6 +234,7 @@ public class AbrirNovoChamado {
 					
 				}
 				}
+				
 		}
 		});
 		btnNewButton.setBounds(633, 552, 89, 23);
@@ -248,7 +257,7 @@ public class AbrirNovoChamado {
 				if(Buscar.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "Informe o Id");
 				}else {
-				String sql1 = "SELECT c01_u01_id,c01_m01_id,c01_assunto,c01_descricao,c01_comentario,c01_data_abertura,c01_prioridade,c01_status,c01_adm01_id FROM c01 where c01_id LIKE ?;";
+				String sql1 = "SELECT c01_id, c01_u01_id,c01_m01_id,c01_assunto,c01_descricao,c01_comentario,c01_data_abertura,c01_prioridade,c01_status,c01_adm01_id FROM c01 where c01_id LIKE ?;";
 
 				Connection conn = null;
 				PreparedStatement pstm = null;
@@ -263,7 +272,7 @@ public class AbrirNovoChamado {
 					ResultSet rs = pstm.executeQuery();
 					
 					while(rs.next()) {
-						
+						textField_2.setText(rs.getString("c01_id"));
 						textField_id.setText(rs.getString("c01_u01_id"));
 						textField_MAQ.setText(rs.getString("c01_m01_id"));
 						textField_Assun.setText(rs.getString("c01_assunto"));
@@ -273,6 +282,7 @@ public class AbrirNovoChamado {
 						txtAvaliar.setText(rs.getString("c01_prioridade"));
 						textField_status.setText(rs.getString("c01_status"));
 						textFieldadm.setText(rs.getString("c01_adm01_id"));
+
 					}
 					
 								 

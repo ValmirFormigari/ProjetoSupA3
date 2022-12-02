@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 
 public class JanelaIMAGE {
 
@@ -39,12 +40,13 @@ public class JanelaIMAGE {
 	 */
 	private void initialize() {
 		frmMapa = new JFrame();
+		frmMapa.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\valmi\\Downloads\\download.png"));
 		frmMapa.setTitle("MAPA");
-		frmMapa.setBounds(100, 100, 753, 740);
+		frmMapa.setBounds(100, 100, 668, 740);
 		frmMapa.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmMapa.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("New label");
+		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\valmi\\Downloads\\Setor X.png"));
 		lblNewLabel.setBounds(10, 11, 723, 700);
 		frmMapa.getContentPane().add(lblNewLabel);

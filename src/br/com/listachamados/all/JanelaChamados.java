@@ -15,6 +15,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import br.com.JanelaIMAGE.JanelaIMAGE;
+import br.com.Maquinas.IncluirMaquina;
+import br.com.Maquinas.JanelaListadeMaquinas;
 import br.com.Usuario.Aplicacao.JanelaListadeUsuario;
 import br.com.Usuario.Aplicacao.JanelaUsuario;
 import br.com.Usuario.factory.ConnectionFactory;
@@ -152,6 +154,12 @@ public class JanelaChamados {
 		frmChamados.getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Lista maquinas");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JanelaListadeMaquinas Novo_Cadastro = new JanelaListadeMaquinas();
+				Novo_Cadastro.frmListaqMaquina.setVisible(true); 
+			}
+		});
 		btnNewButton_1.setBounds(1597, 521, 135, 23);
 		frmChamados.getContentPane().add(btnNewButton_1);
 		

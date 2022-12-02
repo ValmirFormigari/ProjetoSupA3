@@ -20,6 +20,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class JanelaChamadosDeUsuarios {
 
@@ -54,6 +55,7 @@ public class JanelaChamadosDeUsuarios {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\valmi\\Downloads\\download.png"));
 		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setBounds(100, 100, 641, 493);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,7 +72,6 @@ public class JanelaChamadosDeUsuarios {
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null},
 			},
 			new String[] {
 				"id(Numero chamado)", "Assunto", "Prioridade", "Data de Abertura", "Status"

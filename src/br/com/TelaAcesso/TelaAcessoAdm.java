@@ -23,6 +23,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class TelaAcessoAdm {
 
@@ -58,6 +59,7 @@ public class TelaAcessoAdm {
 	 */
 	private void initialize() {
 		frmLogin = new JFrame();
+		frmLogin.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\valmi\\Downloads\\download.png"));
 		frmLogin.getContentPane().setBackground(Color.WHITE);
 		frmLogin.setBackground(Color.WHITE);
 		frmLogin.setTitle("LOGIN");
