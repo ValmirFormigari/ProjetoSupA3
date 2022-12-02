@@ -25,6 +25,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
+import java.awt.Toolkit;
 
 public class TelaAcessoDAO {
 
@@ -60,31 +61,33 @@ public class TelaAcessoDAO {
 	 */
 	private void initialize() {
 		frmLogin = new JFrame();
+		frmLogin.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\valmi\\Downloads\\download.png"));
+		frmLogin.getContentPane().setBackground(Color.WHITE);
 		frmLogin.setBackground(SystemColor.textHighlight);
 		frmLogin.setForeground(Color.WHITE);
 		frmLogin.setResizable(false);
 		frmLogin.setTitle("LOGIN");
-		frmLogin.setBounds(100, 100, 624, 433);
+		frmLogin.setBounds(100, 100, 530, 330);
 		frmLogin.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frmLogin.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Usuario");
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 18));
-		lblNewLabel.setBounds(144, 121, 99, 37);
+		lblNewLabel.setBounds(89, 76, 99, 37);
 		frmLogin.getContentPane().add(lblNewLabel);
 		
 		JLabel lblSenh = new JLabel("SENHA");
 		lblSenh.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 18));
-		lblSenh.setBounds(144, 213, 99, 37);
+		lblSenh.setBounds(89, 139, 99, 37);
 		frmLogin.getContentPane().add(lblSenh);
 		
 		TFUsuario = new JTextField();
-		TFUsuario.setBounds(233, 123, 149, 37);
+		TFUsuario.setBounds(198, 78, 149, 37);
 		frmLogin.getContentPane().add(TFUsuario);
 		TFUsuario.setColumns(10);
 		
 		TFSenha = new JPasswordField();
-		TFSenha.setBounds(233, 215, 149, 37);
+		TFSenha.setBounds(198, 141, 149, 37);
 		frmLogin.getContentPane().add(TFSenha);
 		
 		JButton btnNewButton = new JButton("ENTRAR");
@@ -139,7 +142,7 @@ public class TelaAcessoDAO {
 			}
 		});
 		btnNewButton.setForeground(Color.GREEN);
-		btnNewButton.setBounds(260, 287, 89, 23);
+		btnNewButton.setBounds(225, 210, 89, 23);
 		frmLogin.getContentPane().add(btnNewButton);
 	}
 }

@@ -25,6 +25,7 @@ import javax.swing.JTextPane;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Color;
+import java.awt.Toolkit;
 
 public class JanelaListadeUsuario {
 
@@ -60,6 +61,7 @@ public class JanelaListadeUsuario {
 	 */
 	private void initialize() {
 		frameListaUsu = new JFrame();
+		frameListaUsu.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\valmi\\Downloads\\download.png"));
 		frameListaUsu.getContentPane().setBackground(Color.WHITE);
 		frameListaUsu.setBounds(100, 100, 732, 470);
 		frameListaUsu.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -135,15 +137,19 @@ public class JanelaListadeUsuario {
 		panel.setBackground(Color.RED);
 		panel.setBounds(562, 342, 151, 85);
 		frameListaUsu.getContentPane().add(panel);
+		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Insira o Id ");
+		JLabel lblNewLabel = new JLabel("Insira o ID");
+		lblNewLabel.setBounds(59, 11, 52, 14);
 		panel.add(lblNewLabel);
 		
 		delete = new JTextField();
+		delete.setBounds(39, 32, 86, 20);
 		panel.add(delete);
 		delete.setColumns(10);
 		
 		JButton btnNewButton_1 = new JButton("Excluir");
+		btnNewButton_1.setBounds(48, 53, 63, 23);
 		panel.add(btnNewButton_1);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent DE) {
