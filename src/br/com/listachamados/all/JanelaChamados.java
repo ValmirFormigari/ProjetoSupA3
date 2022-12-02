@@ -27,6 +27,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class JanelaChamados {
 
@@ -63,6 +64,7 @@ public class JanelaChamados {
 	 */
 	private void initialize() {
 		frmChamados = new JFrame();
+		frmChamados.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\valmi\\Downloads\\download.png"));
 		frmChamados.setTitle("Chamados");
 		frmChamados.getContentPane().setBackground(Color.WHITE);
 		frmChamados.setBounds(100, 100, 1768, 645);
@@ -102,7 +104,7 @@ public class JanelaChamados {
 		panel_1.setLayout(null);
 		panel_1.setToolTipText("Chamados em espera");
 		panel_1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Chamados sendo executados", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_1.setBackground(Color.BLUE);
+		panel_1.setBackground(Color.RED);
 		panel_1.setBounds(523, 22, 503, 561);
 		frmChamados.getContentPane().add(panel_1);
 		

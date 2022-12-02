@@ -187,7 +187,7 @@ public class JanelaUsuario {
 		btnNewButton_2 = new JButton("Buscar");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String sql1 = "SELECT u01_id, u01_cpf, u01_nome, u01_funcao, u01_senha FROM u01 where u01_id LIKE ?;";
+				String sql1 = "SELECT u01_id, u01_cpf, u01_nome, u01_funcao, u01_senha FROM u01 where u01_id LIKE ? ;";
 
 				Connection conn = null;
 				PreparedStatement pstm = null;
@@ -197,7 +197,7 @@ public class JanelaUsuario {
 					
 					pstm = (PreparedStatement) conn.prepareStatement(sql1);
 					
-					pstm.setString(1, "%"+ textField_Busc.getText());
+					pstm.setString(1,"%%"+ textField_Busc.getText());
 					
 					ResultSet rs = pstm.executeQuery();
 					
