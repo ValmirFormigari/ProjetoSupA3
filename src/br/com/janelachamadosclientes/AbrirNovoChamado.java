@@ -51,6 +51,7 @@ public class AbrirNovoChamado {
 	private JButton btnNewButton_1;
 	private JTextField Buscar;
 	private JButton btnNewButton_2;
+	private JLabel lblNewLabel_8;
 
 	/**
 	 * Launch the application.
@@ -92,24 +93,24 @@ public class AbrirNovoChamado {
 		
 		textField_id = new JTextField();
 		textField_id.setBackground(SystemColor.control);
-		textField_id.setBounds(70, 71, 86, 20);
+		textField_id.setBounds(252, 41, 86, 20);
 		frmChamado.getContentPane().add(textField_id);
 		textField_id.setColumns(10);
 		
 		textField_MAQ = new JTextField();
 		textField_MAQ.setBackground(SystemColor.control);
-		textField_MAQ.setBounds(252, 71, 86, 20);
+		textField_MAQ.setBounds(252, 81, 86, 20);
 		frmChamado.getContentPane().add(textField_MAQ);
 		textField_MAQ.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Usuario:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.ITALIC, 16));
-		lblNewLabel.setBounds(10, 71, 86, 17);
+		lblNewLabel.setBounds(179, 41, 86, 17);
 		frmChamado.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Maquina:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.ITALIC, 16));
-		lblNewLabel_1.setBounds(178, 71, 77, 17);
+		lblNewLabel_1.setBounds(179, 81, 77, 17);
 		frmChamado.getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Numero do chamado:");
@@ -126,7 +127,7 @@ public class AbrirNovoChamado {
 		
 		JLabel lbDate = new JLabel("Data:");
 		lbDate.setFont(new Font("Tahoma", Font.ITALIC, 16));
-		lbDate.setBounds(560, 305, 86, 32);
+		lbDate.setBounds(560, 311, 86, 32);
 		frmChamado.getContentPane().add(lbDate);
 		
 		textField_Assun = new JTextField();
@@ -143,7 +144,7 @@ public class AbrirNovoChamado {
 		textField_DSC = new JTextField();
 		textField_DSC.setForeground(Color.BLACK);
 		textField_DSC.setBackground(SystemColor.control);
-		textField_DSC.setBounds(20, 102, 689, 192);
+		textField_DSC.setBounds(20, 112, 689, 192);
 		frmChamado.getContentPane().add(textField_DSC);
 		textField_DSC.setColumns(10);
 		
@@ -155,13 +156,13 @@ public class AbrirNovoChamado {
 		
 		txtAvaliar = new JTextField();
 		txtAvaliar.setBackground(SystemColor.control);
-		txtAvaliar.setBounds(623, 71, 86, 20);
+		txtAvaliar.setBounds(623, 81, 86, 20);
 		frmChamado.getContentPane().add(txtAvaliar);
 		txtAvaliar.setColumns(10);
 		
 		JLabel lblNewLabel_4 = new JLabel("Prioridade:");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.ITALIC, 16));
-		lblNewLabel_4.setBounds(535, 72, 98, 14);
+		lblNewLabel_4.setBounds(533, 82, 98, 14);
 		frmChamado.getContentPane().add(lblNewLabel_4);
 		
 		textField_status = new JTextField();
@@ -177,9 +178,9 @@ public class AbrirNovoChamado {
 		
 		textFielddt = new JTextField();
 		textFielddt.setBackground(UIManager.getColor("Button.background"));
-		textFielddt.setText("");
+		textFielddt.setText("  /  /");
 		textFielddt.setToolTipText("");
-		textFielddt.setBounds(603, 309, 106, 28);
+		textFielddt.setBounds(602, 315, 106, 28);
 		frmChamado.getContentPane().add(textFielddt);
 		textFielddt.setColumns(10);
 		
@@ -242,13 +243,13 @@ public class AbrirNovoChamado {
 		
 		textFieldadm = new JTextField();
 		textFieldadm.setBackground(SystemColor.control);
-		textFieldadm.setBounds(425, 71, 99, 20);
+		textFieldadm.setBounds(424, 81, 99, 20);
 		frmChamado.getContentPane().add(textFieldadm);
 		textFieldadm.setColumns(10);
 		
 		JLabel lblNewLabel_6 = new JLabel("ADM:");
 		lblNewLabel_6.setFont(new Font("Tahoma", Font.ITALIC, 16));
-		lblNewLabel_6.setBounds(368, 72, 46, 14);
+		lblNewLabel_6.setBounds(368, 82, 46, 14);
 		frmChamado.getContentPane().add(lblNewLabel_6);
 		
 		btnNewButton_1 = new JButton("BUSCAR ID");
@@ -267,7 +268,7 @@ public class AbrirNovoChamado {
 					
 					pstm = (PreparedStatement) conn.prepareStatement(sql1);
 					
-					pstm.setString(1, "%"+ Buscar.getText());
+					pstm.setString(1, "%%"+ Buscar.getText());
 					
 					ResultSet rs = pstm.executeQuery();
 					
@@ -371,6 +372,16 @@ public class AbrirNovoChamado {
 		});
 		btnNewButton_2.setBounds(96, 552, 98, 23);
 		frmChamado.getContentPane().add(btnNewButton_2);
+		
+		JLabel lblNewLabel_7 = new JLabel("Descrição :");
+		lblNewLabel_7.setFont(new Font("Tahoma", Font.ITALIC, 16));
+		lblNewLabel_7.setBounds(20, 81, 121, 20);
+		frmChamado.getContentPane().add(lblNewLabel_7);
+		
+		lblNewLabel_8 = new JLabel("Comentario :");
+		lblNewLabel_8.setFont(new Font("Tahoma", Font.ITALIC, 16));
+		lblNewLabel_8.setBounds(20, 328, 106, 14);
+		frmChamado.getContentPane().add(lblNewLabel_8);
 		
 	
 	}
